@@ -29,7 +29,7 @@ init _ =
 
 
 type Msg
-    = NoOp
+    = Increment
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
