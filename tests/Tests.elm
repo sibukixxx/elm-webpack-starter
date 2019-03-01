@@ -17,4 +17,10 @@ viewTest =
                     |> Query.fromHtml
                     |> Query.find [ tag "p" ]
                     |> Query.has [ text "0" ]
+        , test "カウンタは15を表示している" <|
+            \() ->
+                view 15
+                    |> Query.fromHtml
+                    |> Query.find [ tag "p" ]
+                    |> Query.has [ text "15" ]
         ]
