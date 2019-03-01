@@ -46,7 +46,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ p [] [ text "0" ] ]
+        [ p [] [ text <| String.fromInt model ] ]
 
 
 
