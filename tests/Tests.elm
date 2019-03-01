@@ -1,4 +1,4 @@
-module Example exposing (a)
+module Tests exposing (viewTest)
 
 import Expect exposing (Expectation)
 import Fuzz exposing (Fuzzer, int, list, string)
@@ -8,18 +8,13 @@ import Test.Html.Query as Query
 import Test.Html.Selector exposing (tag, text)
 
 
-a =
-    1
-
-
-
--- viewTest : Test
--- viewTest =
---     describe "Testing view function"
---         [ test "Button has the expected text" <|
---             \() ->
---                 view 0
---                     |> Query.fromHtml
---                     |> Query.find [ tag "button" ]
---                     |> Query.has [ text "+ 1" ]
---         ]
+viewTest : Test
+viewTest =
+    describe "viewのテスト"
+        [ test "カウンタは0を表示している" <|
+            \() ->
+                view 0
+                    |> Query.fromHtml
+                    |> Query.find [ tag "p" ]
+                    |> Query.has [ text "0" ]
+        ]

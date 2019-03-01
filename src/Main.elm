@@ -14,12 +14,12 @@ import Html.Events exposing (..)
 
 
 type alias Model =
-    {}
+    Int
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( {}, Cmd.none )
+    ( 0, Cmd.none )
 
 
 
