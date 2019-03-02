@@ -9,6 +9,19 @@ import Test.Html.Query as Query
 import Test.Html.Selector exposing (containing, tag, text)
 
 
+continuousIncrementDecrement : Msg -> Model -> Int -> Model
+continuousIncrementDecrement msg currentCounter num =
+    let
+        nextCounter =
+            update msg currentCounter |> Tuple.first
+    in
+    if num == 0 then
+        currentCounter
+
+    else
+        continuousIncrementDecrement msg nextCounter (num - 1)
+
+
 updateTest : Test
 updateTest =
     describe "updateのテスト" <|
@@ -25,16 +38,7 @@ updateTest =
                         |> Expect.equal 6
             , test "カウンタが0のとき、5回Incrementされると5になる" <|
                 \() ->
-                    update Increment 0
-                        |> Tuple.first
-                        |> update Increment
-                        |> Tuple.first
-                        |> update Increment
-                        |> Tuple.first
-                        |> update Increment
-                        |> Tuple.first
-                        |> update Increment
-                        |> Tuple.first
+                    continuousIncrementDecrement Increment 0 5
                         |> Expect.equal 5
             ]
         , describe "減るカウンタ"
