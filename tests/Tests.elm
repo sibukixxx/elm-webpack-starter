@@ -30,6 +30,11 @@ updateTest =
                     update Decrement 0
                         |> Tuple.first
                         |> Expect.equal -1
+            , test "カウンタが5のとDecrementされると4になる" <|
+                \() ->
+                    update Decrement 5
+                        |> Tuple.first
+                        |> Expect.equal 4
             ]
         ]
 
