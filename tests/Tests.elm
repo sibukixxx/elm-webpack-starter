@@ -1,4 +1,4 @@
-module Tests exposing (viewTest)
+module Tests exposing (updateTest, viewTest)
 
 import Expect exposing (Expectation)
 import Fuzz exposing (Fuzzer, int, list, string)
@@ -7,6 +7,17 @@ import Test exposing (..)
 import Test.Html.Event as Event
 import Test.Html.Query as Query
 import Test.Html.Selector exposing (containing, tag, text)
+
+
+updateTest : Test
+updateTest =
+    describe "updateのテスト" <|
+        [ test "カウンタが0のときIncrementされると1になる" <|
+            \() ->
+                update Increment 0
+                    |> Tuple.first
+                    |> Expect.equal 1
+        ]
 
 
 viewTest : Test
