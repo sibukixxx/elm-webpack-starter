@@ -23,6 +23,19 @@ updateTest =
                     update Increment 5
                         |> Tuple.first
                         |> Expect.equal 6
+            , test "カウンタが0のとき、5回Incrementされると5になる" <|
+                \() ->
+                    update Increment 0
+                        |> Tuple.first
+                        |> update Increment
+                        |> Tuple.first
+                        |> update Increment
+                        |> Tuple.first
+                        |> update Increment
+                        |> Tuple.first
+                        |> update Increment
+                        |> Tuple.first
+                        |> Expect.equal 5
             ]
         , describe "減るカウンタ"
             [ test "カウンタが0のとDecrementされると-1になる" <|
