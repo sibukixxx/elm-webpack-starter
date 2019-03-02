@@ -12,16 +12,25 @@ import Test.Html.Selector exposing (containing, tag, text)
 updateTest : Test
 updateTest =
     describe "updateのテスト" <|
-        [ test "カウンタが0のときIncrementされると1になる" <|
-            \() ->
-                update Increment 0
-                    |> Tuple.first
-                    |> Expect.equal 1
-        , test "カウンタが5のときIncrementされると6になる" <|
-            \() ->
-                update Increment 5
-                    |> Tuple.first
-                    |> Expect.equal 6
+        [ describe "増えるカウンタ"
+            [ test "カウンタが0のときIncrementされると1になる" <|
+                \() ->
+                    update Increment 0
+                        |> Tuple.first
+                        |> Expect.equal 1
+            , test "カウンタが5のときIncrementされると6になる" <|
+                \() ->
+                    update Increment 5
+                        |> Tuple.first
+                        |> Expect.equal 6
+            ]
+        , describe "減るカウンタ"
+            [ test "カウンタが0のとDecrementされると-1になる" <|
+                \() ->
+                    update Decrement 0
+                        |> Tuple.first
+                        |> Expect.equal -1
+            ]
         ]
 
 
