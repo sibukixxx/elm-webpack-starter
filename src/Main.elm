@@ -46,7 +46,9 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ p [] [ text <| String.fromInt model ] ]
+        [ button [ onClick Increment ] [ text "+" ]
+        , p [] [ text <| String.fromInt model ]
+        ]
 
 
 
