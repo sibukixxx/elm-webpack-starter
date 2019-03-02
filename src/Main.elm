@@ -35,7 +35,7 @@ type Msg
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( 1, Cmd.none )
+    ( model + 1, Cmd.none )
 
 
 
