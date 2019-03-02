@@ -34,5 +34,12 @@ viewTest =
                         |> Query.find [ tag "button", containing [ text "+" ] ]
                         |> Event.simulate Event.click
                         |> Event.expect Increment
+            , test "-ボタンはDecrement Msgを発行する" <|
+                \() ->
+                    view 0
+                        |> Query.fromHtml
+                        |> Query.find [ tag "button", containing [ text "-" ] ]
+                        |> Event.simulate Event.click
+                        |> Event.expect Decrement
             ]
         ]

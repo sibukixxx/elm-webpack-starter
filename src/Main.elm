@@ -30,6 +30,7 @@ init _ =
 
 type Msg
     = Increment
+    | Decrement
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -48,6 +49,7 @@ view model =
     div []
         [ button [ onClick Increment ] [ text "+" ]
         , p [] [ text <| String.fromInt model ]
+        , button [ onClick Decrement ] [ text "-" ]
         ]
 
 
