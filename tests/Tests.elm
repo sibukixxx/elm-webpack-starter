@@ -17,6 +17,11 @@ updateTest =
                 update Increment 0
                     |> Tuple.first
                     |> Expect.equal 1
+        , test "カウンタが5のときIncrementされると6になる" <|
+            \() ->
+                update Increment 5
+                    |> Tuple.first
+                    |> Expect.equal 6
         ]
 
 
