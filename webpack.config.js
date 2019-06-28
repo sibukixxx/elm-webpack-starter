@@ -78,48 +78,54 @@ var common = {
 };
 
 if (MODE === "development") {
-    console.log("Building for dev...");
-    module.exports = merge(common, {
-        plugins: [
-            // Suggested for hot-loading
-            new webpack.NamedModulesPlugin(),
-            // Prevents compilation errors causing the hot loader to lose state
-            new webpack.NoEmitOnErrorsPlugin()
-        ],
-        module: {
-            rules: [
-                {
-                    test: /\.elm$/,
-                    exclude: [/elm-stuff/, /node_modules/],
-                    use: [
-                        { loader: "elm-hot-webpack-loader" },
-                        {
-                            loader: "elm-webpack-loader",
-                            options: {
-                                // add Elm's debug overlay to output
-                                debug: true,
-                                forceWatch: true
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        devServer: {
-            inline: true,
-            stats: "errors-only",
-            contentBase: path.join(__dirname, "src/assets"),
-            open: 'Google Chrome',
-            historyApiFallback: true,
-            // feel free to delete this section if you don't need anything like this
-            before(app) {
-                // on port 3000
-                app.get("/test", function(req, res) {
-                    res.json({ result: "OK" });
-                });
+  console.log("Building for dev...");
+  console.log("Building for dev...");
+  console.log("Building for dev...");
+  module.exports = merge(common, {
+    plugins: [
+      // Suggested for hot-loading
+      new webpack.NamedModulesPlugin(),
+      // Prevents compilation errors causing the hot loader to lose state
+      new webpack.NoEmitOnErrorsPlugin()
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.elm$/,
+          exclude: [/elm-stuff/, /node_modules/],
+          use: [
+            { loader: "elm-hot-webpack-loader" },
+            {
+              loader: "elm-webpack-loader",
+              options: {
+                // add Elm's debug overlay to output
+                debug: true,
+                forceWatch: true
+              }
             }
+          ]
         }
-    });
+      ]
+    },
+    devServer: {
+      inline: true,
+      stats: "errors-only",
+      contentBase: path.join(__dirname, "src/assets"),
+      historyApiFallback: true,
+      // feel free to delete this section if you don't need anything like this
+      before(app) {
+        // on port 3000
+        app.get("/test", function(req, res) {
+          res.json({ result: "OK" });
+        });
+      }
+    },
+    watch:true,
+    watchOptions:{
+      aggregateTimeout: 300,
+      poll:1000
+    }
+  });
 }
 if (MODE === "production") {
     console.log("Building for Production...");

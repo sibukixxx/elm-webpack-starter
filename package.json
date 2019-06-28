@@ -43,6 +43,7 @@
         "webpack-merge": "^4.1.4"
     },
     "dependencies": {
+        "elm-format": "^0.8.1",
         "purecss": "^1.0.0"
     },
     "prettier": {
